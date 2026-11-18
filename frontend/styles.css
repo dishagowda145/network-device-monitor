@@ -1,0 +1,65 @@
+:root {
+  --bg: #f4f7fb; --panel: #ffffff; --text: #17212b; --muted: #5b6b7b;
+  --brand: #0b6bcb; --danger: #c62828; --border: #dbe3ec;
+  --up: #1b8a4b; --down: #c62828; --unknown: #8a96a3;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+h1, h2 { margin: 0 0 .5rem; }
+h2 { font-size: 1.1rem; }
+p { margin: .25rem 0; }
+.muted { color: var(--muted); }
+.small { font-size: .8rem; }
+.error { color: var(--danger); }
+
+label { display: block; font-size: .85rem; margin-bottom: .75rem; color: var(--muted); }
+input { display: block; width: 100%; margin-top: .25rem; padding: .6rem .75rem; font: inherit; font-size: 1rem; color: var(--text); border: 1px solid var(--border); border-radius: 8px; }
+input:focus, button:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
+button { font: inherit; padding: .5rem .9rem; border: 0; border-radius: 8px; background: var(--brand); color: #fff; cursor: pointer; }
+button:disabled { opacity: .6; cursor: default; }
+button.secondary { background: #e6edf5; color: var(--text); }
+button.danger { background: #fde7e7; color: var(--danger); }
+
+.layout { max-width: 1050px; margin: 0 auto; padding: 1.25rem 1rem 1rem; }
+header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.25rem; }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1rem; }
+.card { background: var(--panel); border: 1px solid var(--border); border-left: 5px solid var(--brand); border-radius: 10px; padding: .9rem 1rem; display: flex; flex-direction: column; }
+.card.up { border-left-color: var(--up); }
+.card.down { border-left-color: var(--down); }
+.count { font-size: 1.8rem; font-weight: 700; }
+
+.columns { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; align-items: start; }
+.stack { display: grid; gap: 1rem; }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+
+.devices { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .75rem; }
+.device { background: var(--panel); border: 1px solid var(--border); border-top: 4px solid var(--unknown); border-radius: 12px; padding: .9rem; }
+.device.up { border-top-color: var(--up); }
+.device.down { border-top-color: var(--down); }
+.device.selected { box-shadow: 0 0 0 2px var(--brand); }
+.device-head { display: flex; justify-content: space-between; gap: .5rem; align-items: center; }
+.panel > button[type=submit] { width: 100%; padding: .6rem 1rem; }
+.row button { font-size: .875rem; padding: .4rem .7rem; }
+.alerts li { font-size: .9rem; }
+.row { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .6rem; }
+.pill { font-size: .75rem; padding: .15rem .6rem; border-radius: 999px; background: #e6edf5; text-transform: uppercase; letter-spacing: .03em; }
+.pill.up { background: #dff3e7; color: #135d32; }
+.pill.down { background: #fde4e4; color: #8e1d1d; }
+
+.history, .alerts { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+.history li { display: grid; grid-template-columns: 12px 150px 1fr 60px; gap: .6rem; align-items: center; font-size: .85rem; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--unknown); }
+.dot.up { background: var(--up); }
+.dot.down { background: var(--down); }
+.bar-wrap { display: block; }
+.bar { display: block; height: 8px; background: var(--brand); border-radius: 4px; }
+.ms { text-align: right; color: var(--muted); }
+.alerts li { display: flex; flex-direction: column; padding: .5rem .6rem; border-radius: 8px; background: #fff4f4; border-left: 4px solid var(--down); }
+.alerts li.recovered { background: #f1faf4; border-left-color: var(--up); }
+
+@media (max-width: 760px) {
+  .columns { grid-template-columns: 1fr; }
+  .history li { grid-template-columns: 12px 1fr 60px; }
+  .history .bar-wrap { grid-column: 2 / 4; grid-row: 2; }
+}

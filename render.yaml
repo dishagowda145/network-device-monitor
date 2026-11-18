@@ -1,0 +1,14 @@
+# One-click deploy on Render (free plan): New > Blueprint > pick this repo.
+# Free-plan disk is temporary: data resets on redeploy/restart. Fine for a demo.
+services:
+  - type: web
+    name: network-device-monitor
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend --workers 1 --threads 4 --bind 0.0.0.0:$PORT wsgi:app
+    envVars:
+      - key: BLOCK_PRIVATE_HOSTS
+        value: "1"
+      - key: PYTHON_VERSION
+        value: "3.12.3"
